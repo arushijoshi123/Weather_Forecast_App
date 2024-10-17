@@ -1,0 +1,16 @@
+{
+  "favoriteCities": [
+    {
+      "id": "953bce6e-ed42-427f-bd67-0b92ba58ae9c",
+      "name": "Delhi"
+    },
+    {
+      "id": "49f98e01-1017-489d-8501-8942134be592",
+      "name": "bangalore"
+    },
+    {
+      "id": "181aab45-9bd6-4ad0-8954-f2613ed270c2",
+      "name": "kolkata"
+    }
+  ]
+}

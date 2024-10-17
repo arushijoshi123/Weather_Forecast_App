@@ -1,0 +1,318 @@
+@import url("https://fonts.googleapis.com/css2?family=Lilita+One&family=Noto+Sans+Display:ital,wght@0,100..900;1,100..900&family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+
+  font-family: "Noto Sans Display", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard {
+  background: url("/assets/sun-clouds.jpg") center center fixed;
+
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.dashboard h1 {
+  text-align: center;
+  font-weight: 800;
+  color: #353935;
+}
+
+.forecast-outer-div {
+  display: flex;
+  width: 90%;
+
+  height: 70vh;
+
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.current-weather-div {
+  width: 30%;
+  border-radius: 10px;
+
+  margin: 10px;
+
+  background-color: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 15px;
+  transition: transform 0.1s;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.current-weather-div:hover {
+  transform: scale(1.05);
+}
+
+.current-weather-div img {
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+  border-radius: 10px;
+}
+
+.current-weather-div p {
+  color: charcoal;
+  margin: 5px 0;
+  font-weight: 400;
+  text-align: center;
+}
+.weather-data {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.data-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.data-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.forecast-right-div {
+  width: 70%;
+  height: 98%;
+
+  padding: 1px;
+
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+.forecast-right-div h2 {
+  font-weight: 600;
+  margin-top: 0.5rem;
+  font-size: 1.25rem;
+}
+.hourly-forecast-div {
+  padding: 0.7rem;
+  height: 50%;
+
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: 2px;
+}
+
+.hourly-forecast-div::-webkit-scrollbar {
+  height: 10px;
+  background-color: rgb(122, 153, 217);
+}
+
+.hourly-forecast-div::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-image: linear-gradient(
+    to bottom,
+    rgb(122, 153, 217),
+    rgb(73, 125, 189),
+    rgb(28, 58, 148)
+  );
+}
+
+.hourly-forecast-div::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+
+.daywise-divs {
+  box-sizing: border-box;
+  width: 18%;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 15px;
+  transition: transform 0.1s;
+  height: max-content;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.daywise-divs img {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  height: 3.5rem;
+}
+.daywise-divs h3 {
+  text-align: center;
+  color: #1b1212;
+  font-weight: 400;
+  font-size: 1rem;
+}
+.daywise-divs h6 {
+  text-align: center;
+  color: #353935;
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+.daywise-divs h6 p {
+  text-align: center;
+  color: #1b1212;
+  font-weight: 400;
+  font-size: 1rem;
+}
+.daywise-divs p {
+  color: #1b1212;
+  text-wrap: nowrap;
+  text-align: center;
+  font-weight: 400;
+  font-size: 0.75rem;
+}
+.daywise-divs:hover {
+  transform: scale(1.05);
+}
+
+/* Media query for tablets and smaller screens */
+@media (max-width: 1024px) {
+  .dashboard {
+    height: max-content;
+  }
+  .forecast-outer-div {
+    flex-direction: column;
+    width: 95%;
+    height: 80%;
+    overflow-x: hidden;
+
+    overflow-y: hidden;
+    margin-left: 0;
+    margin-right: 0;
+    justify-content: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .current-weather-div {
+    width: 90%;
+  }
+  .forecast-right-div {
+    box-sizing: border-box;
+    box-shadow: none;
+    width: 100%;
+
+    margin-left: 0;
+    margin-right: 0;
+    padding: 2%;
+  }
+
+  .current-weather-div img {
+    display: flex;
+    margin: 0 auto;
+    width: 30%;
+    border-radius: 10px;
+  }
+
+  .daywise-divs {
+    box-sizing: border-box;
+    width: 25%;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    transition: transform 0.1s;
+    height: fit-content;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+      rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* Media query for mobile screens */
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 10px;
+  }
+
+  .current-weather-div h2,
+  .forecast-right-div h2 {
+    font-size: 0.8rem;
+  }
+
+  .current-weather-div img,
+  .forecast-right-div img {
+    width: 50%;
+  }
+
+  .daywise-divs {
+    flex-direction: column;
+  }
+
+  .hourly-forecast-div {
+    gap: 1rem;
+  }
+  .forecast-outer-div {
+    width: 99%;
+    height: 80%;
+  }
+  .daywise-divs h3 {
+    color: #1b1212;
+    font-weight: 400;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+  .daywise-divs h6 {
+    color: #353935;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  .daywise-divs h6 p {
+    color: #1b1212;
+    font-weight: 400;
+    font-size: 0.8rem;
+  }
+  .daywise-divs p {
+    color: #1b1212;
+
+    text-align: center;
+    font-weight: 400;
+    font-size: 0.5rem;
+  }
+}
