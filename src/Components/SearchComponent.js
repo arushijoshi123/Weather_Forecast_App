@@ -7,6 +7,7 @@ const SearchComponent = ({ setCity }) => {
 
   const handleSearch = (e) => {
     e.preventDefault();
+    localStorage.setItem("lastSearchedCity", inputValue);
     setCity(inputValue);
 
     setInputValue("");

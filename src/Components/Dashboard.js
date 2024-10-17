@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import FavoriteIcon from "@mui/icons-material/Favorite";
 import {
   Switch,
   FormControlLabel,
@@ -13,9 +12,7 @@ import {
   List,
   ListItem,
   ListItemText,
-  IconButton,
   Typography,
-  Box,
 } from "@mui/material";
 import Favorite from "./Favourite";
 import Forecast from "./Forecast";
@@ -29,13 +26,15 @@ const Dashboard = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [unit, setUnit] = useState("metric");
 
+  // Fetch last searched city from localStorage when component mounts
   useEffect(() => {
     const storedCity = localStorage.getItem("lastSearchedCity");
     if (storedCity) {
       setCity(storedCity);
-      setLastSearchedCity(storedCity);
+      setLastSearchedCity(storedCity); // Set last searched city when the component mounts
     }
-  }, []);
+  }, [lastSearchedCity]);
+
   const fetchFavorites = async () => {
     try {
       const response = await axios.get("http://localhost:3001/favoriteCities");
@@ -44,6 +43,7 @@ const Dashboard = () => {
       console.error("Error fetching favorite cities:", error);
     }
   };
+
   const handleOpenDialog = () => {
     fetchFavorites();
     setOpenDialog(true);
@@ -52,12 +52,15 @@ const Dashboard = () => {
   const handleCloseDialog = () => {
     setOpenDialog(false);
   };
+
   const handleUnitToggle = () => {
     setUnit((prevUnit) => (prevUnit === "metric" ? "imperial" : "metric"));
   };
+
   const handleForecastLoad = (loadedCity) => {
     setCity(loadedCity);
-    localStorage.setItem("lastSearchedCity", loadedCity);
+
+    setLastSearchedCity(loadedCity);
     setShowPopup(true);
   };
 
@@ -74,7 +77,6 @@ const Dashboard = () => {
         }}
       >
         <SearchComponent setCity={setCity} />
-
         <Button
           variant="outlined"
           onClick={handleOpenDialog}
@@ -89,10 +91,6 @@ const Dashboard = () => {
         </Button>
       </div>
 
-      <p style={{ fontSize: "0.8rem", color: "#353935", marginTop: "-1rem" }}>
-        {lastSearchedCity && <p>Last searched city: {lastSearchedCity}</p>}
-      </p>
-
       <FormControlLabel
         control={
           <Switch
@@ -105,6 +103,7 @@ const Dashboard = () => {
         labelPlacement="start"
         style={{ marginLeft: "20px" }}
       />
+
       <Forecast city={city} unit={unit} onForecastLoad={handleForecastLoad} />
 
       <Favorite
@@ -112,6 +111,7 @@ const Dashboard = () => {
         isVisible={showPopup}
         onClose={() => setShowPopup(false)}
       />
+
       <Dialog
         open={openDialog}
         onClose={handleCloseDialog}
